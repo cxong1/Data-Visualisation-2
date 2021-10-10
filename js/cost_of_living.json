@@ -1,40 +1,73 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Cost of living in 2020",
-    "width": 800,
-    "height": 600,
-    "projection": {"type": "equirectangular"},
-    "data": {
-      "url": "https://raw.githubusercontent.com/cxong1/3179-homework-week9/main/js/world.geo.json",
-      "format": {"type": "topojson", "feature": "world.geo"}
-    },
-    "transform": [
-      {
-        "lookup": "properties.name",
-        "from": {
-          "data": {
-            "url": "https://raw.githubusercontent.com/cxong1/3179-homework-week9/main/Data/cost%20of%20living%202020.csv"
-          },
-          "key": "Country",
-          "fields": ["Cost of Living Index"]
-        }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Cost of living in 2020",
+  "width": 800,
+  "height": 600,
+  "params":[
+    {"name": "center_to",
+      "value": [8.407, 192.151],
+      "bind": {
+      "input": "select",
+      "options": [
+      [100.0479, 2.6179],
+      [100.0479, 2.6179],
+      [15.526, 35.2551],
+      [8.7832, 0.5085],
+      [-70.5260, 35.2551],
+      [-70.7832, 0.4915]
+      ],
+      "labels": ["Asia", "Australia" ,"Europe", "Africa", "North America","South America"],
+      "name": "Map Centre: "
       }
-    ],
-    "mark": {"type": "geoshape"},
-    "encoding": {
-      "color": {
-        "field": "Cost of Living Index",
-        "type": "quantitative",
-        "scale": {
-            "type": "threshold",
-            "domain": [10, 50, 100, 150],
-            "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603", "#3b0c0c"]
-            }
-           
-      },
-      "tooltip": [
-        {"field": "properties.name", "type": "nominal", "title": "Country"},
-        {"field": "Cost of Living Index", "type": "quantitative"}
-      ]
+    },
+     {
+      "name": "zoom_level",
+      "value": 300,
+      "bind": {
+      "input": "range",
+      "min": 250,
+      "max": 750,
+        "step": 50,
+      "name": "Zoom: "
+        } 
+      }
+  ],
+  "projection": {
+    "type": "equirectangular",
+    "center": {"expr": "center_to"},
+    "scale": {"expr": "zoom_level"}
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/cxong1/3179-homework-week9/main/js/world.geo.json",
+    "format": {"type": "topojson", "feature": "world.geo"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/cxong1/3179-homework-week9/main/Data/cost%20of%20living%202020.csv"
+        },
+        "key": "Country",
+        "fields": ["Cost of Living Index"]
+      }
     }
+  ],
+  "mark": {"type": "geoshape"},
+  "encoding": {
+    "color": {
+      "field": "Cost of Living Index",
+      "type": "quantitative",
+      "scale": {
+          "type": "threshold",
+          "domain": [10, 50, 100, 150],
+          "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603", "#3b0c0c"]
+          }
+         
+    },
+    "tooltip": [
+      {"field": "properties.name", "type": "nominal", "title": "Country"},
+      {"field": "Cost of Living Index", "type": "quantitative"}
+    ]
   }
+}

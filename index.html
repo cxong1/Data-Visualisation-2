@@ -13,28 +13,26 @@
   <!-- CSS file -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
 
-
 </head>
+
+
 <body>
   
-
 <div class="page">
 
-   <!-- pure grid group -->
-    <div class="pure-g">
-      <div class="pure-u-1-1">
-        <h1>Homework week 10</h1>
-        <p>This page show 2 visualisation from data vis 2 with tooltip and filter.</p>
-      </div>
+    <div class="header">
+        <h1>Wealth and Quality of Life</h1>
     </div>
-  <!-- end pure grid group -->
 
     <!-- pure grid group -->
     <div class="pure-g">
         <div class="pure-u-1-3">
           <div class="description description-left">
             <h2>Cost of Living</h2>
-            <p>The living cost around the world varies .... </p>
+            <p style= "padding-left: 5px;">The living cost around the world varies depending on countries. 
+              The cost of living index is a relative indicator based on the New York City with a base index of 100. 
+            If a country has an index of 50, this means that the cost of living in that country is only 50% that of New York City. 
+          This index will provide a clear overview and comparison of cost of living from country to country.   </p>
           </div>
         </div>
         <div class="pure-u-2-3">
@@ -43,23 +41,117 @@
     </div>
     <!-- end pure grid group -->
 
-    <div id="slope_graph"></div>
+    <div class = spacer>
+      <p>    </p>
+      <p style="font-size: 15px; text-align: center;"> The map below is the zoomable version with continent selection feature</p>
+    </div>
 
 
-  </div> <!-- end page -->
+    <div class="region_map">
+
+      <div id="zoom_map"></div>
+
+    </div>
+
+    <div class= pure-g>
+      <div class = pure-u-2-3 id="cost_category_dot"></div>
+      <div class = pure-u-1-3>
+        <p>The dot plot on the left shows the cost of different category of spending like rents, groceries, restaurant price and the cost of 1 Mcdonald Meal
+          We can observe that most country rent prices are lower than their purchasing power except for Singapore.
+        </p>
+      </div>
+    </div>
+
+    <div class="section header">
+      <h1>GDP per capita Map</h1>
+  </div>
+
+    <div class="gdp_center_map">
+
+      <div id="gdp_map"></div>
+
+    </div>
+
+    <div class = spacer>
+      <p>    </p>
+      <p style="font-size: 15px; text-align: center;"> With the exploration of the GDP and cost of living above, it is also important to see how much Malaysian
+      are earning and whether they are satisfied about it.  </p>
+    </div>
+
+
+
+    <div class= pure-g>
+      <div class = pure-u-2-3 id="iso_state"></div>
+      <div class = pure-u-1-3>
+        <p style= "padding: 40px; padding-top: 300px;">The isotype chart on the left shows the median monthly income for population in different states in Malaysia. Kuala Lumpur has the highest
+          income in the country followed by Putrajaya and Selangor while Kelantan has the lowest income. 
+        </p>
+
+        <div class = pure-g>
+          <div class = pure-u-1-2>
+            <img src="images/499-4996395_iphone-dollar-emoji-hd-png-download.jpeg" width="70" height="70">
+          </div>
+          <div class = pure-u-1-2>
+            <p>represents RM50</p>
+          </div>
+
+        </div>
+        
+      </div>
+    </div>
+
+    <div class = spacer>
+      <p>    </p>
+      <p style="font-size: 15px; text-align: center;"> Salary may directly impact purchasing power but whether it might affect one's satisfaction is still unknown
+      The bubble plot below will explore the relationship between purchasing power and life satisfaction with monthly income as a extra reference.  </p>
+    </div>
+
+    <div class= pure-g>
+      <div class = pure-u-2-3 id="bubble_plot"></div>
+      <div class = pure-u-1-3>
+        <p>From the bubble plot, it shows a trend where the people in country with higher purchasing power will report higher life satisfaction. 
+          
+        </p>
+      </div>
+    </div>
+
+</div> <!-- end page -->
 
 
 
 <script type="text/javascript">
 
-  var vg1 = "js/cost_of_living.json";
-  var vg2 = "js/rent_index.json";
+  var vg1 = "js/cost_of_living_worldmap.json";
+  var vg2 = "js/cost_of_living.json";
+  var cost_category = "js/cost_by_category(dot plot).json";
+  var gdp = "js/gdp_world.json";
+  var isotype = "js/state_income_iso.json";
+  var bubble = "js/pp_vs_satisfaction(bubble).json"
+
+
+
 
   vegaEmbed('#choropleth_map', vg1).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
-  vegaEmbed('#slope_graph', vg2).then(function(result) {
+  vegaEmbed('#zoom_map', vg2).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#cost_category_dot', cost_category).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#gdp_map', gdp).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#iso_state', isotype).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#bubble_plot', bubble).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 

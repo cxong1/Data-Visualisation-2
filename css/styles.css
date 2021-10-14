@@ -1,0 +1,43 @@
+h1 {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+h2 {
+    text-align: center;
+
+}
+
+
+.header {
+    background-color: #B3D1D7;
+}
+
+.region_map {
+	display:flex;
+    flex-wrap: wrap;
+	justify-content:space-evenly;
+	margin:20px;
+    background-color: #B3D1D7;
+}
+
+.gdp_center_map {
+	display:flex;
+    flex-wrap: wrap;
+	justify-content:space-evenly;
+	margin:20px;
+    background-color: white;
+}
+
+.spacer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #B3D1D7;
+}
+
+.section header {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

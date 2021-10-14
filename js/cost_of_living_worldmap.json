@@ -1,0 +1,57 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Cost of living in 2020 World Map",
+    "width": 800,
+    "height": 600,
+    "projection": {
+      "type": "equalEarth"
+    },
+    "data": {
+      "url": "https://raw.githubusercontent.com/cxong1/3179-homework-week9/main/js/world.geo.json",
+      "format": {"type": "topojson", "feature": "world.geo"}
+    },
+    "layer": [
+      {
+        "transform": [
+          {"calculate": "'Data is not available in ' + datum.properties.name", "as": "note"}
+        ],
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
+        "encoding": {
+          "tooltip": {
+            "field": "note"
+          }
+        }
+      },
+      {
+    "transform": [
+      {
+        "lookup": "properties.name",
+        "from": {
+          "data": {
+            "url": "https://raw.githubusercontent.com/cxong1/3179-homework-week9/main/Data/cost%20of%20living%202020.csv"
+          },
+          "key": "Country",
+          "fields": ["Cost of Living Index"]
+        }
+      }
+    ],
+    "mark": {
+      "type": "geoshape",
+      "stroke": "black"
+      },
+    
+    "encoding": {
+      "color": {
+        "field": "Cost of Living Index",
+        "type": "quantitative"
+           
+      },
+      
+      "tooltip": [
+        {"field": "properties.name", "type": "nominal", "title": "Country"},
+        {"field": "Cost of Living Index", "type": "quantitative"}
+      ]
+    }
+  }
+    ]
+  }

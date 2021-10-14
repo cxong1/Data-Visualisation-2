@@ -1,0 +1,72 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 650,
+    "height": 300,
+    "title": "Ranged Dot Plot of Living Cost by Category ",
+    "data": {"url": "https://raw.githubusercontent.com/cxong1/3179-homework-week9/main/Data/cost%20of%20living%202020.csv"},
+    "transform": [
+      {"fold": ["Rent Index", "Groceries Index", "Restaurant Price Index", "Local Purchasing Power Index", "McMeal($)"]}
+  ,
+      {
+        "filter": {
+          "field": "Country",
+          "oneOf": ["China", "United States", "Malaysia", "Japan", "Singapore", "Thailand"]
+        }
+      }
+    ],
+    "encoding": {
+      "x": {
+        "field": "value",
+        "type": "quantitative",
+        "title": "Cost of living index"
+      },
+      "y": {
+        "field": "Country",
+        "type": "nominal",
+        "title": "Country",
+        "axis": {
+          "offset": 5,
+          "ticks": false,
+          "minExtent": 70,
+          "domain": false
+        }
+      }
+    },
+    "layer": [
+      {
+        "mark": "line",
+        "encoding": {
+          "detail": {
+            "field": "Country",
+            "type": "nominal"
+          },
+          "color": {"value": "#db646f"}
+        }
+      },
+      {
+        "mark": {
+          "type": "point",
+          "filled": true
+        },
+        "encoding": {
+          "color": {
+            "field": "key",
+            "type": "nominal",
+            "scale": {
+              "domain": ["Rent Index", "Groceries Index", "Restaurant Price Index", "Local Purchasing Power Index", "McMeal($)"],
+              "range": ["#e6959c", "#2cfc03", "#03b5fc", "#fc5e03", "#fce703"]
+            },
+            "title": "Type of Cost Category"
+          },
+          "size": {"value": 150},
+          "opacity": {"value": 1},
+          "tooltip": [
+            {"field": "Country", "type": "nominal", "title": "Country"},
+            {"field": "value", "type": "quantitative", "title": "Index"}
+  
+          ]
+        }
+      }
+    ]
+  }
+  

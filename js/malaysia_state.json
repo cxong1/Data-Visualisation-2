@@ -1,0 +1,33 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 600,
+    "data": {
+      "url": "https://raw.githubusercontent.com/cxong1/Data-Visualisation-2/main/js/malaysiastate.geojson.json",
+      "format": {
+        "type": "topojson",
+        "feature": "malaysia.geojson"
+      }
+    },
+    "transform": [{
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/cxong1/Data-Visualisation-2/main/Data/income_by_state_malaysia.csv"
+        },
+        "key": "States",
+        "fields": ["Median Income 2019 (RM)"]
+      }
+    }],
+    "projection": {
+      "type": "equirectangular"
+    },
+    "mark": "geoshape",
+    "encoding": {
+      "color": {
+        "field": "Median Income 2019 (RM)",
+        "type": "quantitative"
+      }
+    }
+  }
+  

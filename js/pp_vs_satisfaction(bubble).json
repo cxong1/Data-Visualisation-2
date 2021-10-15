@@ -5,7 +5,56 @@
     "title": "Life statisfaction vs Purchasing power",
   
     "data": {"url": "https://raw.githubusercontent.com/cxong1/Data-Visualisation-2/main/Data/purchasing%20power%20vs%20life%20satisfaction(salary%20%26%20continent).csv"}, 
+    
     "mark": "circle",
+    "transform":[{
+      "filter": "Continent_selection == null || datum.Continent == Continent_selection"},
+      {"filter": "datum['Monthly salary'] > Monthly_salary"}
+      ],
+    "params":[
+      {
+      "name": "continent_highlight",
+      "select": {"type": "point", "fields": ["Continent"]},
+      "bind": "legend"
+      },
+      {
+      "name": "Continent_selection",
+      "bind": {
+      "input": "select",
+      "options": [
+        null,
+        "North America",
+        "South America",
+        "Europe",
+        "Africa",
+        "Asia",
+        "Oceania"
+        ],
+      "labels":[
+        "Show All",
+        "North America",
+        "South America",
+        "Europe",
+        "Africa",
+        "Asia",
+        "Oceania"
+        ],
+      "name": "Continent Selection: "
+      }
+      },
+       {
+      "name": "Monthly_salary",
+      "value": 0,
+      "bind": {
+      "input": "range",
+      "min": 0,
+      "max": 8000,
+      "step": 100,
+      "name": "Minimum Salary: "
+   }
+   }
+      ],
+    
     "encoding": {
       "x": {
         "field": "Purchasing power index", 
@@ -34,6 +83,10 @@
         "field": "Continent",
         "type": "nominal"
         },
+      "opacity": {
+        "condition": {"param": "continent_highlight", "value": 0.7},
+        "value": 0.2
+        },
   
   
       "tooltip": [
@@ -44,6 +97,7 @@
   
           ]
     }
+    
   }
   
   

@@ -54,7 +54,7 @@
             "type": "nominal",
             "scale": {
               "domain": ["Rent Index", "Groceries Index", "Restaurant Price Index", "Local Purchasing Power Index", "McMeal($)"],
-              "range": ["#e6959c", "#2cfc03", "#03b5fc", "#fc5e03", "#fce703"]
+              "range": ["#e6959c", "#2cfc03", "#03b5fc", "black", "#fce703"]
             },
             "title": "Type of Cost Category"
           },

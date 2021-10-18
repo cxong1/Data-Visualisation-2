@@ -55,5 +55,25 @@ h2 {
     padding-bottom: 20px;
 }
 
+mark.rent {
+    color:#e6959c;
+    background: none;
+}
+
+mark.groceries {
+    color:#2cfc03;
+    background: none;
+}
+
+mark.res {
+    color:#03b5fc;
+    background: none;
+}
+
+mark.mc {
+    color:#fce703;
+    background: none;
+}
+
 
 

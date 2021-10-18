@@ -1,3 +1,14 @@
+
+
+.page {
+    width: 1350px;
+    background-color: white;
+    margin: auto;
+    padding: 50px;
+    padding-top: 35px;
+}
+
+
 h1 {
     text-align: center;
     padding-top: 20px;
@@ -36,8 +47,13 @@ h2 {
     background-color: #B3D1D7;
 }
 
+
+
 .section header {
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
+
+

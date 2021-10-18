@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 650,
+    "width": 600,
     "height": 300,
     "title": "Ranged Dot Plot of Living Cost by Category ",
     "data": {"url": "https://raw.githubusercontent.com/cxong1/3179-homework-week9/main/Data/cost%20of%20living%202020.csv"},
